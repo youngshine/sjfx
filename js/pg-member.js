@@ -1,7 +1,7 @@
 App.controller('home', function (page,request) {
 	//var myOpenID = location.search.substr(1);
 	//alert('id:  '+myUserId)
-	// 多极选择返回学校机器所在省市县
+	// 多极选择返回学校所在省市县
 	$(page).on('appShow', function () {
 		console.log('the user can see it!');
 		//if(request.school){ //有选择到学校

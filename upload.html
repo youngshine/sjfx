@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>试卷分析公益平台</title>
+	<meta charset="utf-8" />
+	<meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">	
+	<link rel="stylesheet" href="src/app.min.css">
+	<!-- 	
+    <link rel="stylesheet" href="//cdn.kik.com/app/2.0.1/app.min.css">
+	
+	<link rel="stylesheet" href="src/app.min.css">
+	<link rel="stylesheet" href="assets/css/docs-exam.css"> -->
+	<style>
+		.app-topbar {background:#4285f4;}
+
+		/*  msg box */
+		#m {
+			filter: alpha(opacity=30);
+			-moz-opacity: 0.3; 
+			opacity: 0.3;
+			position:absolute;
+			z-index:10000;
+			background-color:none;
+		}
+		#lo {
+			position:absolute;
+			width:150px;
+			height:90px;
+			line-height:90px;
+			background-color:#000;
+			color:#fff;
+			text-align:center;
+			z-index:9999;
+	
+			filter: alpha(opacity=70);
+			-moz-opacity: 0.7; 
+			opacity: 0.7;
+			
+			border-radius:10px;
+			-moz-border-radius:10px; /* Old Firefox */
+		}
+		/* ends - msg box */		
+
+		.photos-wrapper {
+			//min-height:80px;
+			height:auto;
+			overflow:auto;
+			padding:0 10px;
+			position:relative;
+			//float:left;
+			//clear:both;
+			background:#fff;
+		}
+		.imgContainer,.imgUpload,.imgMinus,.imgPlus{
+		    padding:0px;
+		    margin:0px;  
+		}
+		.imgContainer{
+			//display: block;
+			//clear:both;
+			position:relative;
+			float:left;
+			height:75px;
+			width:75px;
+			margin:-0px 0 9px 5px; 
+		}
+		.imgUpload{
+		    height:75px;
+		    width:75px;
+			position:relative;
+			border:1px solid #ddd;
+		}
+		/* 删除图片 */
+		.imgMinus-Old {
+			height:33px;
+		    width:33px;
+		    top:0px;
+		    left:0px;
+		    z-index:2;
+			position:absolute;
+			//display:block;
+		}
+		.imgPlus-Old{
+		    padding:0px;
+		    margin:0px;
+		    height:90px;
+		    width:75px;
+			position:relative;
+			//clear:both;
+			//display:inline;
+		}
+		.imgMinus {
+			height:33px;
+		    width:33px;
+		    top:-5px;
+		    left:-5px;
+		    z-index:2;
+			position:absolute;
+			//display:block;
+			line-height:33px;
+		}
+		.imgPlus {
+		    height:75px;
+		    width:75px;
+			line-height:75px;
+			border:1px solid #ccc;
+			text-align:center;
+			font-size:4em;
+			color:#ccc;
+			position:relative;
+			display:block;
+			float:left;
+			margin:0px 0 9px 5px;
+		}
+		ul.km li {
+			display:block;float:left;width:25%;
+			line-height:80px;height:80px;
+			border:1px solid #efefef;
+			text-align:center;
+		}
+	</style>
+  </head>
+
+  <body>
+ 
+	
+	<div class="app-page" data-page="home">
+		<div class="app-topbar">
+			<div class="app-title">上传试卷</div>
+		</div>
+		<div class="app-content">
+
+				<div style="background:#fff;margin-top:10px;line-height:45px;border-bottom:1px solid #ddd;">
+					<span style="padding-left:15px;">考试科目：</span>
+					<span class="njkm" style="color:#888;">选择科目、年级</span>	
+					<span style="float:right;padding-right:10px;color:#888;">〉</span>
+				</div>
+				<div style="background:#fff;line-height:40px;">
+					<span class="label" style="padding-left:15px;">试卷照片</span>
+				</div>
+				
+				<!-- 多选图片数组 -->
+	  			<div class="photos-wrapper">
+	  				<div class="imgContainer">
+						<img class="imgUpload"  />
+						<!-- 添加图片按钮 
+						<img class="imgMinus" src="assets/ico/remove.png" alt="删除"> -->
+						<div class="imgMinus" style="font-size:2.2em;color:red;">✖</div>
+					</div>
+					<!-- 添加图片按钮 -->
+					<div class="imgPlus">＋</div>
+					<!-- 
+					<img class="imgPlus" src="assets/ico/plus.png" alt="＋选择相片"> -->
+	  			</div>
+				
+				<div style="clear:both;"></div>
+				
+				<div style="padding:10px;background:#fff;border:1px solid #ddd;">
+					<div class="app-button green submit">提交</div>	
+				</div>	
+				
+				<div class="co" style="text-align:center;color:green;margin:15px;">
+					服务热线：400-6680-118</small>
+				</div>
+			
+		</div>	
+	</div>
+	
+    <div class="app-page" data-page="select-njkm">
+      <div class="app-topbar">
+        <div class="app-button left" data-back data-autotitle></div>
+        <div class="app-title">选择年级科目</div>
+		<div class="app-button right ok" style="display:none;">✓选中</div>
+      </div>
+      <div class="app-content">
+		  <ul class="app-list km">
+			<label>科目</label>
+			<li>数学</li>
+			<li>物理</li>
+			<li>化学</li>
+			<li>科学</li>
+		  </ul>	
+		  <div style="clear:both;"></div>
+		  <ul class="app-list nj">
+			<label>年级</label>
+			<li>四年级</li>
+			<li>五年级</li>
+			<li>六年级</li>
+			<li>七年级</li>
+			<li>八年级</li>
+			<li>九年级</li>
+			<li>高一年</li>
+			<li>高二年</li>
+			<li>高三年</li>
+		  </ul>	  	 
+      </div>
+    </div>
+
+
+    <script src="src/zepto.js"></script>
+    <script src="src/app.min.js"></script>
+	
+	<script src="js/main.js"></script>
+	<script src="js/pg-upload.js"></script>
+	
+	<!-- js-sdk weixin 签名 -->
+	<script type="text/javascript" src = "http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>	
+	
+    <script>
+		myUserId = location.search.substr(1); 
+		//alert(myUserId)
+		// 获取sdk签名, main.js
+		wxSig();
+		
+		
+		App.load('home');
+    </script>
+	
+  </body>
+</html>
